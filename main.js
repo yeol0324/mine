@@ -1,7 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth - 100;
+canvas.width = window.innerWidth - 10;
 canvas.height = window.innerHeight - 100;
 
 var bugImg = new Image();
@@ -64,8 +64,9 @@ function 프레임() {
         }
 
         isCrash(dino, a);
-        if (timer % 1200 === 0) {
+        if (timer % 600 === 0) {
             speed++;
+            console.log(speed);
         }
         a.x = a.x - speed;
         a.draw();
@@ -77,7 +78,6 @@ function 프레임() {
     if (!jumping) {
         if (dino.y < 200) dino.y += 3;
     }
-    console.log(dino.y);
     if (dino.y < 80) {
         jumping = false;
         jumpTimer = 0;
@@ -98,4 +98,7 @@ document.addEventListener("keydown", function (e) {
     if (e.code === "Space") {
         jumping = true;
     }
+});
+document.addEventListener("touchstart", function (e) {
+    jumping = true;
 });
