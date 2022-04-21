@@ -79,9 +79,9 @@ function 프레임() {
         // console.log(dino.y < window.innerHeight - 100);
         console.log(jumpTimer);
         // console.log(jumpTimer);
-        if (jumpTimer > 3 || dino.y < window.innerHeight - 100) dino.y += 3;
+        if (dino.y < window.innerHeight - 100) dino.y += 3;
     }
-    if (dino.y < 0) {
+    if (jumpTimer > 30) {
         jumping = false;
         jumpTimer = 0;
     }
