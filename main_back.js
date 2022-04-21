@@ -2,7 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth - 10;
-canvas.height = window.innerHeight - 10;
+canvas.height = window.innerHeight - 100;
 
 var bugImg = new Image();
 bugImg.src = "bug.png";
@@ -11,7 +11,7 @@ dinoImg.src = "dino.png";
 
 var dino = {
     x: 10,
-    y: window.innerHeight - 80,
+    y: 200,
     width: 50,
     height: 50,
     draw() {
@@ -76,12 +76,9 @@ function 프레임() {
         jumpTimer++;
     }
     if (!jumping) {
-        // console.log(dino.y < window.innerHeight - 100);
-        console.log(jumpTimer);
-        // console.log(jumpTimer);
-        if (jumpTimer > 3 || dino.y < window.innerHeight - 100) dino.y += 3;
+        if (dino.y < 200) dino.y += 3;
     }
-    if (dino.y < 0) {
+    if (dino.y < 80) {
         jumping = false;
         jumpTimer = 0;
     }
@@ -91,13 +88,9 @@ function 프레임() {
 프레임();
 
 function isCrash(dino, cactus) {
-    var x1 = cactus.x;
-    var x2 = cactus.x + cactus.width;
-    var y1 = cactus.y;
-    var y2 = cactus.y + cactus.height;
-    if (dino.x + dino.width > x1 && dino.x < x2) {
-        if (dino.y < y2 && dino.y + dino.height > y1) cancelAnimationFrame(animation);
-    }
+    var x = cactus.x - (dino.x + dino.width);
+    var y = cactus.y - (dino.y + dino.height);
+    if (x < 0 && y < 0) cancelAnimationFrame(animation);
 }
 
 var jumping = false;
