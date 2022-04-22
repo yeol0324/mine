@@ -6,8 +6,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
     </head>
+    <style>
+        #score {
+            display: none;
+            width: 0;
+            height: 0;
+            background: url("score.png") no-repeat center center/contain;
+            position: absolute;
+            top: 0;
+        }
+        #myscore {
+            font-size: 25px;
+            position: absolute;
+            top: 55%;
+            left: 48%;
+            transform: rotate(25deg);
+        }
+        #retry {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+        }
+    </style>
     <body>
         <canvas id="canvas"></canvas>
+        <div id="score">
+            <span id="myscore"></span>
+            <button id="retry" onclick="retry()">다시 할래</button>
+        </div>
+        <div>Lv .<span id="level">1</span></div>
         <script src="main.js"></script>
     </body>
 </html>
